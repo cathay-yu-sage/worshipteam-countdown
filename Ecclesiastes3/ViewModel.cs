@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
-
 
 namespace Ecclesiastes3
 {
@@ -13,6 +7,8 @@ namespace Ecclesiastes3
         public DateTime EndTime { get; set; }
 
         public Boolean ClockMode { get; set; }
+
+        public Boolean ReadyMode { get; set; }
 
         public String CountdownValue
         {
@@ -25,8 +21,16 @@ namespace Ecclesiastes3
 
                 if (DateTime.Now > EndTime)
                 {
-                    return (DateTime.Now.Second % 2 == 0) ?
-                        String.Empty : "READY";
+                    if (ReadyMode)
+                    {
+                        return (DateTime.Now.Second%2 == 0)
+                            ? String.Empty
+                            : "READY";
+                    }
+                    else
+                    {
+                        return "STANDBY";
+                    }
                 }
                 var diffTime = EndTime - DateTime.Now;
                 return diffTime.ToString(@"mm\:ss");
@@ -41,5 +45,9 @@ namespace Ecclesiastes3
             }
         }
 
+        public String ReadyModeButtonContent
+        {
+            get { return ReadyMode ? "Standby" : "Ready"; }
+        }
     }
 }

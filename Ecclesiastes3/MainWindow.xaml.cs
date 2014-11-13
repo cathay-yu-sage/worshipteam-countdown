@@ -1,18 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 using System.Timers;
 
 namespace Ecclesiastes3
@@ -22,27 +9,28 @@ namespace Ecclesiastes3
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Timer refreshTimer = new Timer(1000);
-        private CountdownDisplayWindow displayWindow = new CountdownDisplayWindow();
+        private readonly Timer _refreshTimer = new Timer(1000);
+        private readonly CountdownDisplayWindow _displayWindow = new CountdownDisplayWindow();
 
         public MainWindow()
         {
             InitializeComponent();
             DataContext = new ViewModel();
-            refreshTimer.Elapsed += OnTimer;
-            refreshTimer.Enabled = true;
-            displayWindow.Show();
+            _refreshTimer.Elapsed += OnTimer;
+            _refreshTimer.Enabled = true;
+            _displayWindow.Show();
         }
 
         private void OnTimer(object source, ElapsedEventArgs e)
         {
-            this.Dispatcher.Invoke(new Action(() =>
-                {
-                    var vm = DataContext as ViewModel;
-                    this.PreviewLabel.Content = vm.CountdownValue;
-                    this.CurrentTimeLabel.Content = vm.CurrentTimeValue;
-                    this.displayWindow.SetDisplayValue(vm.CountdownValue);
-                }));
+            Dispatcher.Invoke(() =>
+            {
+                var vm = DataContext as ViewModel;
+                PreviewLabel.Content = vm.CountdownValue;
+                CurrentTimeLabel.Content = vm.CurrentTimeValue;
+                _displayWindow.SetDisplayValue(vm.CountdownValue);
+                ReadyButton.Content = vm.ReadyModeButtonContent;
+            });
         }
 
         private void ToggleClockMode(object sender, RoutedEventArgs e)
@@ -57,6 +45,7 @@ namespace Ecclesiastes3
             var vm = DataContext as ViewModel;
             vm.EndTime = newEndTime;
             vm.ClockMode = false;
+            vm.ReadyMode = false;
         }
 
         private void Click5(object sender, RoutedEventArgs e)
@@ -64,6 +53,7 @@ namespace Ecclesiastes3
             var vm = DataContext as ViewModel;
             vm.EndTime = DateTime.Now.AddMinutes(5);
             vm.ClockMode = false;
+            vm.ReadyMode = false;
         }
 
         private void ClickReady(object sender, RoutedEventArgs e)
@@ -71,6 +61,7 @@ namespace Ecclesiastes3
             var vm = DataContext as ViewModel;
             vm.EndTime = DateTime.Now;
             vm.ClockMode = false;
+            vm.ReadyMode = !vm.ReadyMode;
         }
 
         private void CustomClick(object sender, RoutedEventArgs e)
@@ -81,6 +72,7 @@ namespace Ecclesiastes3
                 var vm = DataContext as ViewModel;
                 vm.EndTime = DateTime.Now.AddMinutes(result);
                 vm.ClockMode = false;
+                vm.ReadyMode = false;
             }
         }
     }
