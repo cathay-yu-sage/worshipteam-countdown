@@ -1,0 +1,10 @@
+﻿<Window x:Class="Ecclesiastes3.CountdownDisplayWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CountdownDisplayWindow" Height="300" Width="300">
+    <Grid>
+        <Viewbox Height="auto" Width="auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Stretch="Fill">
+            <Label Name="CountdownDisplay" Content="30:00" Background="Black" Foreground="White" Height="auto" Width="auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        </Viewbox>
+    </Grid>
+</Window>
