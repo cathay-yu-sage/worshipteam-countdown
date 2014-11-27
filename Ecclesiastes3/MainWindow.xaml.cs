@@ -95,5 +95,70 @@ namespace Ecclesiastes3
                 vm.ReadyMode = false;
             }
         }
+
+        private void ClearClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text = String.Empty;
+        }
+
+        private void ZeroClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "0";
+        }
+
+        private void DecimalClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += ".";
+        }
+
+        private void OneClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "1";
+        }
+
+        private void TwoClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "2";
+        }
+
+        private void ThreeClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "3";
+        }
+
+        private void FourClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "4";
+        }
+
+        private void FiveClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "5";
+        }
+
+        private void SixClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "6";
+        }
+
+        private void SevenClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "7";
+        }
+
+        private void EightClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "8";
+        }
+
+        private void NineClick(object sender, RoutedEventArgs e)
+        {
+            CustomMinutes.Text += "9";
+        }
+
+        private void OnClosed(object sender, EventArgs e)
+        {
+            _displayWindow.Close();
+        }
     }
 }
