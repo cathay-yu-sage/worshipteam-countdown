@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Linq;
 using System.Windows;
 using System.Timers;
+using System.Windows.Forms;
+using Timer = System.Timers.Timer;
 
 namespace Ecclesiastes3
 {
@@ -19,6 +22,23 @@ namespace Ecclesiastes3
             _refreshTimer.Elapsed += OnTimer;
             _refreshTimer.Enabled = true;
             _displayWindow.Show();
+
+            MaximizeDisplayWindowOnSecondary();
+            WindowState = WindowState.Maximized;
+        }
+
+        private void MaximizeDisplayWindowOnSecondary()
+        {
+            if (Screen.AllScreens.Length >= 2)
+            {
+                var secondary = Screen.AllScreens.First(s => !s.Primary);
+                var secondaryArea = secondary.WorkingArea;
+                _displayWindow.Left = secondaryArea.Left;
+                _displayWindow.Top = secondaryArea.Top;
+                _displayWindow.Width = secondaryArea.Width;
+                _displayWindow.Height = secondaryArea.Height;
+                _displayWindow.WindowState = WindowState.Maximized;
+            }
         }
 
         private void OnTimer(object source, ElapsedEventArgs e)
