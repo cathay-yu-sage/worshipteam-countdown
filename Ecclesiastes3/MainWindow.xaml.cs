@@ -50,6 +50,7 @@ namespace Ecclesiastes3
                 CurrentTimeLabel.Content = vm.CurrentTimeValue;
                 _displayWindow.SetDisplayValue(vm.CountdownValue);
                 ReadyButton.Content = vm.ReadyModeButtonContent;
+                CountdownToTimeButton.Content = vm.TargetTimeButtonContent;
             });
         }
 
@@ -61,9 +62,8 @@ namespace Ecclesiastes3
 
         private void Click1030(object sender, RoutedEventArgs e)
         {
-            var newEndTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 30, 0);
             var vm = DataContext as ViewModel;
-            vm.EndTime = newEndTime;
+            vm.EndTime = vm.NextTargetTimeValue;
             vm.ClockMode = false;
             vm.ReadyMode = false;
         }

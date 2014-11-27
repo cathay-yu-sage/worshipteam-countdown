@@ -49,5 +49,22 @@ namespace Ecclesiastes3
         {
             get { return ReadyMode ? "Standby" : "Ready"; }
         }
+
+        public DateTime NextTargetTimeValue
+        {
+            get
+            {
+                if (DateTime.Now.Hour == 9)
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 55, 0);
+                if (DateTime.Now.Hour == 10)
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 30, 0);
+                return DateTime.Now;
+            }
+        }
+
+        public String TargetTimeButtonContent
+        {
+            get { return "Countdown to " + NextTargetTimeValue.ToShortTimeString(); }
+        }
     }
 }

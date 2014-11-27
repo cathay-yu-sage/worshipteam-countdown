@@ -6,7 +6,7 @@
         <Viewbox HorizontalAlignment="Left" Height="auto" Margin="10,10,10,190" VerticalAlignment="Top" Width="auto" Stretch="Fill">
             <Label x:Name="PreviewLabel" Content="30:00" Background="Black" Foreground="Yellow" MouseDoubleClick="ToggleClockMode"/>
         </Viewbox>
-        <Button Content="Countdown to 10:30am" HorizontalAlignment="Left" Margin="21,0,0,120" VerticalAlignment="Bottom" Width="149" Height="48" Click="Click1030"/>
+        <Button Name="CountdownToTimeButton" Content="Countdown to 10:30am" HorizontalAlignment="Left" Margin="21,0,0,120" VerticalAlignment="Bottom" Width="149" Height="48" Click="Click1030"/>
         <Button Content="5 minutes Countdown" HorizontalAlignment="Right" Margin="0,0,180,120" VerticalAlignment="Bottom" Width="135" Height="48" Click="Click5"/>
         <Button Name="ReadyButton" Content="READY" HorizontalAlignment="Right" Margin="0,0,21,120" VerticalAlignment="Bottom" Width="138" Height="48" Click="ClickReady"/>
         <TextBox x:Name="CustomMinutes" HorizontalAlignment="Right" Height="25" Margin="0,0,150,60" TextWrapping="Wrap" Text="15" VerticalAlignment="Bottom" Width="27" RenderTransformOrigin="0.963,-0.04" />
