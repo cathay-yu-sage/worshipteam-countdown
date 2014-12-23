@@ -58,13 +58,20 @@ namespace Ecclesiastes3
                     return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 55, 0);
                 if (DateTime.Now.Hour == 10)
                     return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 30, 0);
+                if (DateTime.Now.Hour == 11)
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 11, 35, 0);
                 return DateTime.Now;
             }
         }
 
         public String TargetTimeButtonContent
         {
-            get { return "Countdown to " + NextTargetTimeValue.ToShortTimeString(); }
+            get
+            {
+                if (DateTime.Now >= NextTargetTimeValue)
+                    return "Standby";
+                return "Countdown to " + NextTargetTimeValue.ToShortTimeString();
+            }
         }
     }
 }
