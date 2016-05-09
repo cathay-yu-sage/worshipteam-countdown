@@ -7,6 +7,7 @@
             <Label x:Name="PreviewLabel" Content="30:00" Background="Black" Foreground="Yellow" MouseDoubleClick="ToggleClockMode"/>
         </Viewbox>
         <Button Name="CountdownToTimeButton" Content="Countdown to 10:30am" HorizontalAlignment="Left" Margin="10,0,0,166" VerticalAlignment="Bottom" Width="149" Height="48" Click="Click1030"/>
+        <Button Name="FlashButton" Content="Toggle Flash" HorizontalAlignment="Left" Margin="179,0,0,166" VerticalAlignment="Bottom" Width="75" Height="48" Click="FlashButton_Click"/>
         <Button Content="5 minutes Countdown" HorizontalAlignment="Right" Margin="0,0,180,163" VerticalAlignment="Bottom" Width="135" Height="48" Click="Click5"/>
         <Button Name="ReadyButton" Content="READY" HorizontalAlignment="Right" Margin="0,0,10,166" VerticalAlignment="Bottom" Width="138" Height="48" Click="ClickReady"/>
         <TextBox x:Name="CustomMinutes" HorizontalAlignment="Right" Height="25" Margin="0,0,130,70" TextWrapping="Wrap" Text="15" VerticalAlignment="Bottom" Width="49" RenderTransformOrigin="0.963,-0.04" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />

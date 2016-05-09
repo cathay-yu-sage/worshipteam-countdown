@@ -47,6 +47,10 @@ namespace Ecclesiastes3
             Dispatcher.Invoke(() =>
             {
                 var vm = DataContext as ViewModel;
+                PreviewLabel.Background = vm.PreviewBackgroundColor;
+                PreviewLabel.Foreground = vm.PreviewForegroundColor;
+                _displayWindow.CountdownDisplay.Background = vm.DisplayBackgroundColor;
+                _displayWindow.CountdownDisplay.Foreground = vm.DisplayForegroundColor;
                 PreviewLabel.Content = vm.CountdownValue;
                 CurrentTimeLabel.Content = vm.CurrentTimeValue;
                 _displayWindow.SetDisplayValue(vm.CountdownValue);
@@ -61,12 +65,19 @@ namespace Ecclesiastes3
             vm.ClockMode = !vm.ClockMode;
         }
 
+        private void ToggleFlashMode(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as ViewModel;
+            vm.FlashMode = !vm.FlashMode;
+        }
+
         private void Click1030(object sender, RoutedEventArgs e)
         {
             var vm = DataContext as ViewModel;
             vm.EndTime = vm.NextTargetTimeValue;
             vm.ClockMode = false;
             vm.ReadyMode = false;
+            vm.FlashMode = false;
         }
 
         private void Click5(object sender, RoutedEventArgs e)
@@ -75,6 +86,7 @@ namespace Ecclesiastes3
             vm.EndTime = DateTime.Now.AddMinutes(5);
             vm.ClockMode = false;
             vm.ReadyMode = false;
+            vm.FlashMode = false;
         }
 
         private void ClickReady(object sender, RoutedEventArgs e)
@@ -83,6 +95,7 @@ namespace Ecclesiastes3
             vm.EndTime = DateTime.Now;
             vm.ClockMode = false;
             vm.ReadyMode = !vm.ReadyMode;
+            vm.FlashMode = false;
         }
 
         private void CustomClick(object sender, RoutedEventArgs e)
@@ -94,6 +107,7 @@ namespace Ecclesiastes3
                 vm.EndTime = DateTime.Now.AddMinutes(result);
                 vm.ClockMode = false;
                 vm.ReadyMode = false;
+                vm.FlashMode = false;
             }
         }
 
@@ -160,6 +174,12 @@ namespace Ecclesiastes3
         private void OnClosed(object sender, EventArgs e)
         {
             _displayWindow.Close();
+        }
+
+        private void FlashButton_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as ViewModel;
+            vm.FlashMode = !vm.FlashMode;
         }
     }
 }
