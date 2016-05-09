@@ -38,7 +38,7 @@ namespace Ecclesiastes3
                 _displayWindow.Width = secondaryArea.Width;
                 _displayWindow.Height = secondaryArea.Height;
                 _displayWindow.WindowState = WindowState.Maximized;
-                _displayWindow.WindowStyle = WindowStyle.None;
+                //_displayWindow.WindowStyle = WindowStyle.None;
             }
         }
 
