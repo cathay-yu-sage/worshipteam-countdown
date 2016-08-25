@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Media;
 
 namespace Ecclesiastes3
@@ -93,12 +94,20 @@ namespace Ecclesiastes3
         {
             get
             {
-                if (DateTime.Now.Hour == 9)
-                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 00, 0);
-                if (DateTime.Now.Hour == 10)
-                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 30, 0);
-                if (DateTime.Now.Hour == 11)
-                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 11, 35, 0);
+                if (DateTime.Now.Hour < 9)
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 00, 0);
+                if ((DateTime.Now.Hour <= 9) && (DateTime.Now.Minute < 45))
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, 45, 0);
+                if ((DateTime.Now.Hour <= 10) && (DateTime.Now.Minute < 20))
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, 20, 0);
+                if (DateTime.Now.Hour < 11)
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 11, 00, 0);
+                if ((DateTime.Now.Hour <= 11) && (DateTime.Now.Minute < 20))
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 11, 20, 0);
+                if ((DateTime.Now.Hour <= 11) && (DateTime.Now.Minute < 45))
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 11, 45, 0);
+                if ((DateTime.Now.Hour <= 12) && (DateTime.Now.Minute < 20))
+                    return new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 12, 20, 0);
                 return DateTime.Now;
             }
         }
