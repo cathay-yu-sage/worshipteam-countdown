@@ -55,7 +55,6 @@ namespace Ecclesiastes3
                 CurrentTimeLabel.Content = vm.CurrentTimeValue;
                 _displayWindow.SetDisplayValue(vm.CountdownValue);
                 ReadyButton.Content = vm.ReadyModeButtonContent;
-                CountdownToTimeButton.Content = vm.TargetTimeButtonContent;
             });
         }
 
@@ -63,30 +62,6 @@ namespace Ecclesiastes3
         {
             var vm = DataContext as ViewModel;
             vm.ClockMode = !vm.ClockMode;
-        }
-
-        private void ToggleFlashMode(object sender, RoutedEventArgs e)
-        {
-            var vm = DataContext as ViewModel;
-            vm.FlashMode = !vm.FlashMode;
-        }
-
-        private void Click1030(object sender, RoutedEventArgs e)
-        {
-            var vm = DataContext as ViewModel;
-            vm.EndTime = vm.NextTargetTimeValue;
-            vm.ClockMode = false;
-            vm.ReadyMode = false;
-            vm.FlashMode = false;
-        }
-
-        private void Click5(object sender, RoutedEventArgs e)
-        {
-            var vm = DataContext as ViewModel;
-            vm.EndTime = DateTime.Now.AddMinutes(5);
-            vm.ClockMode = false;
-            vm.ReadyMode = false;
-            vm.FlashMode = false;
         }
 
         private void ClickReady(object sender, RoutedEventArgs e)
@@ -98,79 +73,6 @@ namespace Ecclesiastes3
             vm.FlashMode = false;
         }
 
-        private void CustomClick(object sender, RoutedEventArgs e)
-        {
-            double result;
-            if (double.TryParse(this.CustomMinutes.Text, out result))
-            {
-                var vm = DataContext as ViewModel;
-                vm.EndTime = DateTime.Now.AddMinutes(result);
-                vm.ClockMode = false;
-                vm.ReadyMode = false;
-                vm.FlashMode = false;
-            }
-        }
-
-        private void ClearClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text = String.Empty;
-        }
-
-        private void ZeroClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "0";
-        }
-
-        private void DecimalClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += ".";
-        }
-
-        private void OneClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "1";
-        }
-
-        private void TwoClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "2";
-        }
-
-        private void ThreeClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "3";
-        }
-
-        private void FourClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "4";
-        }
-
-        private void FiveClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "5";
-        }
-
-        private void SixClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "6";
-        }
-
-        private void SevenClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "7";
-        }
-
-        private void EightClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "8";
-        }
-
-        private void NineClick(object sender, RoutedEventArgs e)
-        {
-            CustomMinutes.Text += "9";
-        }
-
         private void OnClosed(object sender, EventArgs e)
         {
             _displayWindow.Close();
@@ -180,6 +82,25 @@ namespace Ecclesiastes3
         {
             var vm = DataContext as ViewModel;
             vm.FlashMode = !vm.FlashMode;
+        }
+
+        private void TargetTime_Click(object sender, RoutedEventArgs e)
+        {
+            short hour, minutes;
+            if (Int16.TryParse(HourTextBox.Text, out hour) && Int16.TryParse(MinuteTextBox.Text, out minutes)
+                && (hour >= 0) && (hour < 24) && (minutes >= 0) && (minutes < 60))
+            {
+                DateTime newTargetTime = new DateTime(
+                    DateTime.Now.Year,
+                    DateTime.Now.Month,
+                    DateTime.Now.Day,
+                    hour,
+                    minutes,
+                    0);
+                var vm = DataContext as ViewModel;
+                vm.EndTime = newTargetTime;
+                vm.ClockMode = false;
+            }
         }
     }
 }
