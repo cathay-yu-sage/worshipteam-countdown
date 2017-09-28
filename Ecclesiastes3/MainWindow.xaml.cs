@@ -102,5 +102,12 @@ namespace Ecclesiastes3
                 vm.ClockMode = false;
             }
         }
+
+        private void AddAMinute_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = DataContext as ViewModel;
+            vm.EndTime = vm.EndTime.AddMinutes(1);
+            vm.ClockMode = false;
+        }
     }
 }

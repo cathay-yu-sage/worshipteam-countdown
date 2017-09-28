@@ -1,17 +1,18 @@
 ﻿<Window x:Class="Ecclesiastes3.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Ecclesiastes 3 Control Panel" Height="378.167" Width="600" MinHeight="420" MinWidth="600" Closed="OnClosed">
-    <Grid Margin="0,0,0,-21">
+        Title="Ecclesiastes 3 Control Panel" Height="443.87" Width="600" MinHeight="420" MinWidth="600" Closed="OnClosed">
+    <Grid Margin="0,0,0,-1">
         <Viewbox HorizontalAlignment="Left" Height="auto" Margin="10,10,10,220" VerticalAlignment="Top" Width="auto" Stretch="Fill">
             <Label x:Name="PreviewLabel" Content="30:00" Background="Black" Foreground="Yellow" MouseDoubleClick="ToggleClockMode"/>
         </Viewbox>
         <Button Name="ReadyButton" Content="READY" HorizontalAlignment="Left" Margin="10,0,0,152" VerticalAlignment="Bottom" Width="138" Height="48" Click="ClickReady"/>
         <Label x:Name="CurrentTimeLabel" Content="Current Time" HorizontalAlignment="Left" Margin="10,0,0,117" VerticalAlignment="Bottom" Width="259" Height="24" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-        <Image Margin="10,0,0,30" Source="Image2.png" Stretch="Fill" Opacity="0.4" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="259" Height="74"/>
-        <TextBox x:Name="HourTextBox" HorizontalAlignment="Right" Height="48" Margin="0,0,10,152" TextWrapping="Wrap" Text="8" VerticalAlignment="Bottom" Width="70" FontSize="36" TextAlignment="Right"/>
-        <TextBox x:Name="MinuteTextBox" HorizontalAlignment="Right" Height="48" Margin="0,0,10,90" TextWrapping="Wrap" Text="45" VerticalAlignment="Bottom" Width="70" FontSize="36" TextAlignment="Right"/>
-        <Button x:Name="SetTargetButton" Content="Set Target Time" HorizontalAlignment="Right" Margin="0,0,10,60" VerticalAlignment="Bottom" Width="97" Height="23" RenderTransformOrigin="1.379,2.555" Click="TargetTime_Click"/>
-        <Button Name="FlashButton" Content="Toggle Flash" HorizontalAlignment="Right" Margin="0,0,10,30" VerticalAlignment="Bottom" Width="75" Height="23" Click="FlashButton_Click"/>
+        <Image Margin="10,0,0,10" Source="Image2.png" Stretch="Fill" Opacity="0.4" HorizontalAlignment="Left"  VerticalAlignment="Bottom" Width="259" Height="74"/>
+        <TextBox x:Name="HourTextBox" HorizontalAlignment="Right" Height="48" Margin="0,0,10,163" TextWrapping="Wrap" Text="8" VerticalAlignment="Bottom" Width="70" FontSize="36" TextAlignment="Right"/>
+        <TextBox x:Name="MinuteTextBox" HorizontalAlignment="Right" Height="48" Margin="0,0,10,101" TextWrapping="Wrap" Text="45" VerticalAlignment="Bottom" Width="70" FontSize="36" TextAlignment="Right"/>
+        <Button x:Name="SetTargetButton" Content="Set Target Time" HorizontalAlignment="Right" Margin="0,0,10,69" VerticalAlignment="Bottom" Width="97" Height="23" RenderTransformOrigin="1.379,2.555" Click="TargetTime_Click"/>
+        <Button x:Name="AddAMinute" Content="Add a Minute" HorizontalAlignment="Right" Margin="0,0,10,40" VerticalAlignment="Bottom" Width="86" Height="23" Click="AddAMinute_Click"/>
+        <Button x:Name="FlashButton" Content="Toggle Flash" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" Height="23" Click="FlashButton_Click"/>
     </Grid>
 </Window>
